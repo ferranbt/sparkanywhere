@@ -6,12 +6,12 @@ Unlike traditional Spark setups (`Yarn` or `Kubernetes`) that require pre-provis
 
 It does not rely on any hosted Spark solution and it can work on top of any service that provides container deployment and inter-service DNS discovery (i.e. `docker`, `aws ecs`).
 
-`Sparkanywhere` deploys the Spark job as a Kubernetes task and [shims]() the Kuberentes API to deploy the Pods (i.e. Spark tasks) on a different container scheduler. Then, if you use as a scheduler a container-as-a-service like ECS, the computation is serverless.
+`Sparkanywhere` deploys the Spark job as a Kubernetes task and [shims](<https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjb34G9_LyEAxVVUaQEHW-VDqUQFnoECBYQAQ&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FShim_(computing)&usg=AOvVaw2UIsBXHBUIOXEQZiJP3vXL&opi=89978449>) the Kuberentes API to deploy the Pods (i.e. Spark tasks) on a different container scheduler. Then, if you use as a scheduler a container-as-a-service like ECS, the computation is serverless.
 
 Supported providers:
 
-- [`docker`](): Local Docker provider.
-- [`ecs`](): Amazon Elastic Container Service with Fargate.
+- [`docker`](#run-with-docker): Local Docker provider.
+- [`ecs`](#run-with-ecs): Amazon Elastic Container Service with Fargate.
 
 ## Architecture
 

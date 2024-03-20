@@ -21,6 +21,7 @@ func main() {
 	flag.StringVar(&cfg.EcsConfig.SecurityGroup, "ecs-security-group", "", "")
 	flag.StringVar(&cfg.EcsConfig.SubnetId, "ecs-subnet-id", "", "")
 	flag.StringVar(&cfg.ControlPlaneAddr, "control-plane-addr", "", "")
+	flag.Uint64Var(&cfg.Instances, "instances", 1, "")
 	flag.Parse()
 
 	var (

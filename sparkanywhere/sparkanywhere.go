@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"sync"
 	"time"
 
@@ -31,6 +32,7 @@ type Config struct {
 	EcsEnabled       bool
 	DockerEnabled    bool
 	EcsConfig        *ECSConfig
+	Instances        uint64
 }
 
 func New(config *Config) (*K8S, error) {
@@ -109,7 +111,7 @@ func (k *K8S) deploy() error {
 		Args: []string{
 			"/bin/bash",
 			"-c",
-			"cd .. && ./bin/spark-submit --master k8s://http://" + k.config.ControlPlaneAddr + ":1323 --deploy-mode client --name spark-pi --class org.apache.spark.examples.SparkPi --conf spark.executor.instances=1 --conf spark.kubernetes.container.image=apache/spark:latest ./examples/jars/spark-examples_2.12-3.5.0.jar",
+			"cd .. && ./bin/spark-submit --master k8s://http://" + k.config.ControlPlaneAddr + ":1323 --deploy-mode client --name spark-pi --class org.apache.spark.examples.SparkPi --conf spark.executor.instances=" + strconv.Itoa(int(k.config.Instances)) + " --conf spark.kubernetes.container.image=apache/spark:latest ./examples/jars/spark-examples_2.12-3.5.0.jar",
 		},
 	}
 

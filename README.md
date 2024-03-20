@@ -34,7 +34,7 @@ The example runs the builtin PI example from Spark with one distributed worker.
 Run the example using Docker as a scheduler
 
 ```bash
-go run main.go --docker
+go run main.go --docker [--instances 1]
 ```
 
 ### Run with ECS
